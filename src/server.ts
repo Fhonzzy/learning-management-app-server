@@ -6,8 +6,9 @@ import helmet from "helmet";
 import morgan from "morgan";
 import * as dynamoose from "dynamoose";
 import courseRoutes from "./routes/courseRoutes";
-import { createClerkClient } from "@clerk/express";
+import { clerkMiddleware, createClerkClient, requireAuth } from "@clerk/express";
 import userClerkRoute from "./routes/userClerkRoute"
+import transactionRoute from "./routes/transactionRoute"
 
 dotenv.config();
 
@@ -29,13 +30,15 @@ app.use(morgan("common"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
+app.use(clerkMiddleware())
 
 app.get("/", (req, res) => {
   res.send("Hello");
 });
 
 app.use("/courses", courseRoutes);
-app.use("/users/clerk", userClerkRoute);
+app.use("/users/clerk", requireAuth(), userClerkRoute);
+app.use("/transactions", requireAuth(), transactionRoute)
 
 const port = process.env.PORT || 3000;
 if (!isProduction) {

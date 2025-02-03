@@ -63,11 +63,12 @@ app.use((0, morgan_1.default)("common"));
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.use((0, cors_1.default)());
+app.use((0, express_2.clerkMiddleware)());
 app.get("/", (req, res) => {
     res.send("Hello");
 });
 app.use("/courses", courseRoutes_1.default);
-app.use("/users/clerk", userClerkRoute_1.default);
+app.use("/users/clerk", (0, express_2.requireAuth)(), userClerkRoute_1.default);
 const port = process.env.PORT || 3000;
 if (!isProduction) {
     app.listen(port, () => {
