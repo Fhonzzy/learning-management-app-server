@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/courses", courseRoutes);
-app.use("/user/clerk", userClerkRoute);
+app.use("/users/clerk", userClerkRoute);
 
 const port = process.env.PORT || 3000;
 if (!isProduction) {

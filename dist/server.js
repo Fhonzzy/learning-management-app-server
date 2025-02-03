@@ -67,7 +67,7 @@ app.get("/", (req, res) => {
     res.send("Hello");
 });
 app.use("/courses", courseRoutes_1.default);
-app.use("/user/clerk", userClerkRoute_1.default);
+app.use("/users/clerk", userClerkRoute_1.default);
 const port = process.env.PORT || 3000;
 if (!isProduction) {
     app.listen(port, () => {

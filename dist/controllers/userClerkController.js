@@ -13,15 +13,15 @@ exports.updateUser = void 0;
 const server_1 = require("../server");
 const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { userId } = req.params;
-    const { userData } = req.body;
+    const userData = req.body;
     try {
-        yield server_1.clerkClient.users.updateUserMetadata(userId, {
+        const user = yield server_1.clerkClient.users.updateUserMetadata(userId, {
             publicMetadata: {
                 userType: userData.publicMetadata.userType,
                 settings: userData.publicMetadata.settings,
             },
         });
-        res.json({ message: "User updated successfully" });
+        res.json({ message: "User updated successfully", data: user });
     }
     catch (error) {
         res.status(500).json({ message: "Error updating User", error });
