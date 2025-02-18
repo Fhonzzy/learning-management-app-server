@@ -16,25 +16,30 @@ export const createStripePaymentIntent = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  let amount = req.body
+  let amount = req.body;
 
   if (!amount || amount <= 0) {
-    amount = 50
+    amount = 50;
   }
   try {
     const paymentIntent = await stripe.paymentIntents.create({
-        amount,
-        currency: "usd",
-        automatic_payment_methods: {
-            enabled: true,
-            allow_redirects: "never"
-        }
-    })
+      amount,
+      currency: "usd",
+      automatic_payment_methods: {
+        enabled: true,
+        allow_redirects: "never",
+      },
+    });
 
-    res.json({ message: "", data: {
-        clientSecret: paymentIntent.client_secret
-    } });
+    res.json({
+      message: "",
+      data: {
+        clientSecret: paymentIntent.client_secret,
+      },
+    });
   } catch (error) {
-    res.status(500).json({ message: "Error creating stripe payment intent", error });
+    res
+      .status(500)
+      .json({ message: "Error creating stripe payment intent", error });
   }
 };

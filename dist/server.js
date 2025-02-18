@@ -47,6 +47,7 @@ const dynamoose = __importStar(require("dynamoose"));
 const courseRoutes_1 = __importDefault(require("./routes/courseRoutes"));
 const express_2 = require("@clerk/express");
 const userClerkRoute_1 = __importDefault(require("./routes/userClerkRoute"));
+const transactionRoute_1 = __importDefault(require("./routes/transactionRoute"));
 dotenv_1.default.config();
 const isProduction = process.env.NODE_ENV === "Production";
 if (!isProduction) {
@@ -69,6 +70,7 @@ app.get("/", (req, res) => {
 });
 app.use("/courses", courseRoutes_1.default);
 app.use("/users/clerk", (0, express_2.requireAuth)(), userClerkRoute_1.default);
+app.use("/transactions", (0, express_2.requireAuth)(), transactionRoute_1.default);
 const port = process.env.PORT || 3000;
 if (!isProduction) {
     app.listen(port, () => {
