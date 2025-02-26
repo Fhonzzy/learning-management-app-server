@@ -6,5 +6,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const transactionController_1 = require("../controllers/transactionController");
 const router = express_1.default.Router();
-router.get('/stripe/payment-intent', transactionController_1.createStripePaymentIntent);
+router.post('/stripe/payment-intent', transactionController_1.createStripePaymentIntent);
 exports.default = router;

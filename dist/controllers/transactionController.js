@@ -21,7 +21,7 @@ if (!process.env.STRIPE_SECRET_KEY) {
 }
 const stripe = new stripe_1.default(process.env.STRIPE_SECRET_KEY);
 const createStripePaymentIntent = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    let amount = req.body;
+    let amount = req.body.amount;
     if (!amount || amount <= 0) {
         amount = 50;
     }

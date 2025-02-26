@@ -16,7 +16,7 @@ export const createStripePaymentIntent = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  let amount = req.body;
+  let amount = req.body.amount
 
   if (!amount || amount <= 0) {
     amount = 50;
