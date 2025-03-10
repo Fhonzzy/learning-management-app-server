@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createTransaction = exports.createStripePaymentIntent = void 0;
+exports.listTransactions = exports.createTransaction = exports.createStripePaymentIntent = void 0;
 const stripe_1 = __importDefault(require("stripe"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const courseModel_1 = __importDefault(require("../models/courseModel"));
@@ -99,3 +99,19 @@ const createTransaction = (req, res) => __awaiter(void 0, void 0, void 0, functi
     }
 });
 exports.createTransaction = createTransaction;
+const listTransactions = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let userId = req.query.userId;
+    try {
+        const transactions = userId
+            ? yield transactionModel_1.default.query("userId").eq(userId).exec()
+            : yield transactionModel_1.default.scan().exec();
+        res.json({
+            message: "Transaction retrieved successfully",
+            data: transactions,
+        });
+    }
+    catch (error) {
+        res.status(500).json({ message: "Error retrieving transactions", error });
+    }
+});
+exports.listTransactions = listTransactions;

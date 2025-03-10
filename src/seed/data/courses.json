@@ -301,46 +301,7 @@
       }
     ]
   },
-  {
-    "courseId": "d4e5f6g7-h8i9-j0k1-l2m3-n4o5p6q7r8s9",
-    "teacherId": "user_3rTg67LmZnXc4Vb8Wd0JyUhEq",
-    "teacherName": "Michael Brown",
-    "title": "Data Science Fundamentals",
-    "description": "Learn the basics of data science, including statistics, data visualization, and machine learning.",
-    "category": "Data Science",
-    "image": "https://images.pexels.com/photos/4491461/pexels-photo-4491461.jpeg",
-    "price": 8999,
-    "level": "Intermediate",
-    "status": "Published",
-    "enrollments": [
-      { "userId": "user_6tHm89QwNpKj3Fx5Vy2RdLcBs" },
-      { "userId": "user_9xWp45MnKjL8vRt2Hs6BqDcEy" }
-    ],
-    "sections": [
-      {
-        "sectionId": "4u6v8w0x-2y4z-6a8b-0c2d-4e6f8g0h2i4j",
-        "sectionTitle": "Introduction to Data Science",
-        "sectionDescription": "Learn the basics of data science and its applications.",
-        "chapters": [
-          {
-            "chapterId": "g7h8i9j0-k1l2-m3n4-o5p6-q7r8s9t0u1v2",
-            "type": "Video",
-            "title": "What is Data Science?",
-            "content": "https://example.com/videos/what-is-data-science.mp4",
-            "video": "https://example.com/videos/what-is-data-science.mp4",
-            "comments": []
-          },
-          {
-            "chapterId": "h8i9j0k1-l2m3-n4o5-p6q7-r8s9t0u1v2w3",
-            "type": "Quiz",
-            "title": "Data Science Basics Quiz",
-            "content": "1. Define data science.\n2. What are the main components of data science?\n3. How does machine learning relate to data science?",
-            "comments": []
-          }
-        ]
-      }
-    ]
-  },
+  
   {
     "courseId": "e5f6g7h8-i9j0-k1l2-m3n4-o5p6q7r8s9t0",
     "teacherId": "user_7kFh92JkCpQw3N8M5L4xRzVtYs",
